@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="Pcf.MicrophoneStream" constructor="ContinuousRecognizer" version="0.0.3" display-name-key="ContinuousRecognizer" description-key="ContinuousRecognizer description" control-type="standard" >
+    <!--external-service-usage node declares whether this 3rd party PCF control is using external service or not, if yes, this control will be considered as premium and please also add the external domain it is using.
+    If it is not using any external service, please set the enabled="false" and DO NOT add any domain below. The "enabled" will be false by default.
+    Example1:
+      <external-service-usage enabled="true">
+        <domain>www.Microsoft.com</domain>
+      </external-service-usage>
+    Example2:
+      <external-service-usage enabled="false">
+      </external-service-usage>
+    -->
+    <external-service-usage enabled="true">
+      <!--UNCOMMENT TO ADD EXTERNAL DOMAINS
+      <domain></domain>
+      <domain></domain>
+      -->
+    </external-service-usage>
+    <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
+  
+    <property name="AuthToken" display-name-key="AuthToken_Display_Key" description-key="AuthToken_Desc_Key" of-type="SingleLine.Text" usage="input" required="false"/>
+    <property name="SubscriptionKey" display-name-key="SubscriptionKey_Display_Key" description-key="SubscriptionKey_Desc_Key" of-type="SingleLine.Text" usage="input" required="false"/>
+    <property name="EndpointId" display-name-key="EndpointId_Display_Key" description-key="EndpointId_Desc_Key" of-type="SingleLine.Text" usage="input" required="false"/>
+    <property name="AzureRegion" display-name-key="AzureRegion_Display_Key" description-key="AzureRegion_Desc_Key" of-type="SingleLine.Text" usage="input" required="true"/>
+    <property name="StartRecognition" display-name-key="StartRecognition_Display_Key" description-key="StartRecognition_Desc_Key" of-type="TwoOptions" usage="input" required="false"/>
+    <property name="StopRecognition" display-name-key="StopRecognition_Display_Key" description-key="StopRecognition_Desc_Key" of-type="TwoOptions" usage="input" required="false"/>
+    <property name="RecognitionLanguage" display-name-key="RecognitionLanguage_Display_Key" description-key="RecognitionLanguageL_Desc_Key" of-type="SingleLine.Text" usage="input" required="false"/>
+    <property name="RecognizedPhrase" display-name-key="RecognizedPhrase_Display_Key" description-key="RecognizedPhrase_Desc_Key" of-type="SingleLine.Text" usage="output" required="false"/>
+    <property name="RecognizedPhraseId" display-name-key="RecognizedPhraseId_Display_Key" description-key="RecognizedPhraseId_Desc_Key" of-type="SingleLine.Text" usage="output" required="false"/>
+    <resources>
+      <code path="index.ts" order="1"/>
+      <css path="css/MicrophoneStream.css" order="1"/>
+      
+      <resx path="strings/MicrophoneStream.1035.resx" version="1.0.0"/>
+      <resx path="strings/MicrophoneStream.1033.resx" version="1.0.0"/>
+    </resources>
+    <!-- UNCOMMENT TO ENABLE THE SPECIFIED API
+    <feature-usage>
+      <uses-feature name="Device.captureAudio" required="true" />
+      <uses-feature name="Device.captureImage" required="true" />
+      <uses-feature name="Device.captureVideo" required="true" />
+      <uses-feature name="Device.getBarcodeValue" required="true" />
+      <uses-feature name="Device.getCurrentPosition" required="true" />
+      <uses-feature name="Device.pickFile" required="true" />
+      <uses-feature name="Utility" required="true" />
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+    -->
+  </control>
+</manifest>

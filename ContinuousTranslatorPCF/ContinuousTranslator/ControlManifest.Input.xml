@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="Pcf.MicrophoneStream" constructor="ContinuousTranslator" version="0.0.1" display-name-key="ContinuousTranslator" description-key="ContinuousTranslator description" control-type="standard" >
+    <external-service-usage enabled="true"/>
+    <property name="AuthToken" display-name-key="AuthToken_Display_Key" description-key="AuthToken_Desc_Key" of-type="SingleLine.Text" usage="input" required="true"/>
+    <property name="EndpointId" display-name-key="EndpointId_Display_Key" description-key="EndpointId_Desc_Key" of-type="SingleLine.Text" usage="input" required="false"/>
+    <property name="AzureRegion" display-name-key="AzureRegion_Display_Key" description-key="AzureRegion_Desc_Key" of-type="SingleLine.Text" usage="input" required="true"/>
+    <property name="StartRecognition" display-name-key="StartRecognition_Display_Key" description-key="StartRecognition_Desc_Key" of-type="TwoOptions" usage="input" required="true"/>
+    <property name="StopRecognition" display-name-key="StopRecognition_Display_Key" description-key="StopRecognition_Desc_Key" of-type="TwoOptions" usage="input" required="true"/>
+    <property name="RecognitionLanguage" display-name-key="RecognitionLanguage_Display_Key" description-key="RecognitionLanguageL_Desc_Key" of-type="SingleLine.Text" usage="input" required="false"/>
+    <property name="RecognizedPhrase" display-name-key="RecognizedPhrase_Display_Key" description-key="RecognizedPhrase_Desc_Key" of-type="SingleLine.Text" usage="output" required="false"/>
+    <property name="RecognizedPhraseId" display-name-key="RecognizedPhraseId_Display_Key" description-key="RecognizedPhraseId_Desc_Key" of-type="SingleLine.Text" usage="output" required="false"/>
+    <resources>
+      <code path="index.ts" order="1"/>
+      <css path="css/ContinuousTranslator.css" order="1"/>
+      
+      <resx path="strings/ContinuousTranslator.1035.resx" version="1.0.0"/>
+      <resx path="strings/ContinuousTranslator.1033.resx" version="1.0.0"/>
+    </resources>
+    <feature-usage>
+      <uses-feature name="Device.captureAudio" required="true"/>
+    </feature-usage>
+  </control>
+</manifest>

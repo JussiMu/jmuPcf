@@ -1,0 +1,42 @@
+.StartRecoButton {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  .StopRecoButton {
+    background-color: #bd2d23;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  .StopRecoButton:disabled {
+    background-color: #585858;
+  }
+
+  
+  .StartRecoButton:disabled {
+    background-color: #585858;
+  }
+
+  .tempTextBox
+  {
+    text-align: left;
+    font-size: large ;
+    font-style: oblique;
+    width: 90%;
+  }
