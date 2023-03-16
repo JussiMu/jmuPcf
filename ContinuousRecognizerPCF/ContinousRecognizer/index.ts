@@ -52,13 +52,14 @@ export class ContinuousRecognizer implements ComponentFramework.StandardControl<
 		this.startButton.addEventListener("click", this.onStartButtonClick.bind(this));
 		this.startButton.classList.add("StartRecoButton")
 		this.startButton.innerText = context.resources.getString("StartRecButtonLabel_Key");
-		this.startButton.disabled =context.mode.isControlDisabled;
+		this.startButton.disabled = this._context.mode.isControlDisabled; //If the control is disabled set the start button as disabled when intiting.
+		
 
 		this.stopButton  = document.createElement('button');
 		this.stopButton.addEventListener("click", this.onStopButtonClick.bind(this));
 		this.stopButton.innerText = context.resources.getString("StopRecButtonLabel_Key");		
 		this.stopButton.classList.add("StopRecoButton")
-		this.stopButton.disabled =context.mode.isControlDisabled;
+		
 
 		this.containerElement.appendChild(this.startButton);
 		this.containerElement.appendChild(this.stopButton);
@@ -69,6 +70,7 @@ export class ContinuousRecognizer implements ComponentFramework.StandardControl<
 		
 		this.setRecordingStatus(false);
 		this.startButton.disabled = this._context.mode.isControlDisabled; //If the control is disabled set the start button as disabled when intiting.
+		
 		container.appendChild(this.containerElement);
 
 		// Add control initialization code
@@ -78,7 +80,8 @@ export class ContinuousRecognizer implements ComponentFramework.StandardControl<
 	}
 
 	private onStartButtonClick( e:Event){
-		setTimeout( () => {this.sdkStartContinuousRecocgnitionBtn();},500);
+		if(this._context.mode.isRead == false  )
+			setTimeout( () => {this.sdkStartContinuousRecocgnitionBtn();},300);
 		
 	}
 
@@ -115,9 +118,15 @@ export class ContinuousRecognizer implements ComponentFramework.StandardControl<
 
 	public setDisabledStatus(isDisabled:boolean)
 	{
-
+		if (isDisabled){ //If whole control is disabled
 			this.startButton.disabled = isDisabled;
 			this.stopButton.disabled = isDisabled;
+		}
+		else{ //set based on isRecording status
+			this.startButton.disabled = this.isRecording
+			this.startButton.disabled != this.isRecording
+		}
+
 	}
 
 	private HandleEndpointChange()
@@ -217,8 +226,13 @@ export class ContinuousRecognizer implements ComponentFramework.StandardControl<
 		var speechConfig;
 		//For testing purposes the autorization is done with subscription key (from subscription)
 		//Better way is to have the client request an auth token and use it to authenticate to Speech-API
-		//speechConfig = SpeechSDK.SpeechConfig.fromAuthorizationToken(this._context.parameters.AuthToken.raw || "" , this._context.parameters.AzureRegion.raw || "");
-		speechConfig = SpeechSDK.SpeechConfig.fromSubscription(this._context.parameters.AuthToken.raw || "" , this._context.parameters.AzureRegion.raw || "westeurope");
+		if (this._context.parameters.AuthToken.raw){
+			speechConfig = SpeechSDK.SpeechConfig.fromAuthorizationToken(this._context.parameters.AuthToken.raw || "" , this._context.parameters.AzureRegion.raw || "westeurope");
+		}
+
+		else  {
+			speechConfig = SpeechSDK.SpeechConfig.fromSubscription(this._context.parameters.SubscriptionKey.raw || "" , this._context.parameters.AzureRegion.raw || "westeurope");
+		}
 		//speechConfig = SpeechSDK.SpeechConfig.fromEndpoint(new URL("wss://westeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?cid=792ce5e8-7189-4544-9ae1-a65a1824c1da"), "" );
 		//speechConfig.authorizationToken = this._context.parameters.AuthToken.raw || "";
 
