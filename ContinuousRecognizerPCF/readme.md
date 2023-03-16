@@ -4,7 +4,7 @@ This project contains on PCF Control for Power Apps Canvas Apps that uses Micros
 
 ## Quick start with prebuild solution
 - Azure Speech Service endpoint required - Free Tier available
-- https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/
+- https://azure.microsoft.com/en-us/products/cognitive-services/speech-to-text
 
 - Code components need to be enabled in your Environment
 - https://learn.microsoft.com/en-us/power-apps/developer/component-framework/component-framework-for-canvas-apps
