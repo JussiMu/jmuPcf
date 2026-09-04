@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="ModirumPlatforms.Controls" constructor="ModernTagControl" version="2.0.1" display-name-key="ModernTagControl_Display_Key" description-key="ModernTagControl_Desc_Key" control-type="virtual" >
+    <external-service-usage enabled="false">
+    </external-service-usage>
+    
+    <!-- Relationship Type: Choose 'Native' for N:N relationships, 'Intersect' for custom intersect tables, or 'Connection' for Dataverse connections -->
+    <property name="relationshipType" display-name-key="RelationshipType_Display_Key" description-key="RelationshipType_Desc_Key" of-type="SingleLine.Text" usage="input" required="false" />
+    
+    <!-- Native N:N Relationship Configuration -->
+    <property name="relationshipName" display-name-key="RelationshipName_Display_Key" description-key="RelationshipName_Desc_Key" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="primaryEntitySchemaName" display-name-key="PrimaryEntity_Display_Key" description-key="PrimaryEntity_Desc_Key" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="secondaryEntitySchemaName" display-name-key="SecondaryEntity_Display_Key" description-key="SecondaryEntity_Desc_Key" of-type="SingleLine.Text" usage="input" required="false" />
+    
+    <!-- Intersect Table Configuration -->
+    <property name="intersectTableName" display-name-key="IntersectTable_Display_Key" description-key="IntersectTable_Desc_Key" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="primaryLookupField" display-name-key="PrimaryLookup_Display_Key" description-key="PrimaryLookup_Desc_Key" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="secondaryLookupField" display-name-key="SecondaryLookup_Display_Key" description-key="SecondaryLookup_Desc_Key" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="intersectNameField" display-name-key="IntersectNameField_Display_Key" description-key="IntersectNameField_Desc_Key" of-type="SingleLine.Text" usage="input" required="false" />
+
+    <!-- Relationship Type Choice Field Configuration (used in Intersect and Connection modes) -->
+    <property name="relationshipTypeFieldName" display-name-key="RelationshipTypeField_Display_Key" description-key="RelationshipTypeField_Desc_Key" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="relationshipTypeValues" display-name-key="RelationshipTypeValues_Display_Key" description-key="RelationshipTypeValues_Desc_Key" of-type="SingleLine.Text" usage="input" required="false" />
+    
+    <!-- Common Configuration -->
+    <property name="searchFieldName" display-name-key="SearchField_Display_Key" description-key="SearchField_Desc_Key" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="allowAutoCreate" display-name-key="AllowAutoCreate_Display_Key" description-key="AllowAutoCreate_Desc_Key" of-type="TwoOptions" usage="input" required="true" />
+    
+    <!-- dataset node represents a set of entity records on CDS; allow more than one datasets -->
+    <data-set name="tagDataSet" display-name-key="TagDataSet_Display_Key">
+      <property-set name="displayField" display-name-key="DisplayField_Display_Key" description-key="DisplayField_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
+      <property-set name="recordId" display-name-key="RecordId_Display_Key" description-key="RecordId_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
+    </data-set>
+    <resources>
+      <code path="index.ts" order="1"/>
+      <platform-library name="React" version="16.14.0" />
+      <platform-library name="Fluent" version="9.46.2" />
+      <css path="css/ModernTagControl.css" order="1" />
+      <resx path="strings/ModernTagControl.1033.resx" version="1.0.0" />
+      <resx path="strings/ModernTagControl.1035.resx" version="1.0.0" />
+    </resources>
+    
+    <feature-usage>
+      <uses-feature name="WebAPI" required="true" />
+      <uses-feature name="Utility" required="false" />
+      <uses-feature name="platform-library-enabled" required="true" />
+    </feature-usage>
+  </control>
+</manifest>

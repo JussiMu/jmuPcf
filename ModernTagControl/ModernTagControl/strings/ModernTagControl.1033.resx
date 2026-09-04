@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  
+  <!-- Control Display Names -->
+  <data name="ModernTagControl_Display_Key" xml:space="preserve">
+    <value>Modern Tag Control</value>
+    <comment>Display name for the control</comment>
+  </data>
+  <data name="ModernTagControl_Desc_Key" xml:space="preserve">
+    <value>A modern, high-performance tag management control for managing entity relationships with virtual scrolling support</value>
+    <comment>Description of the control</comment>
+  </data>
+  
+  <!-- Property Display Names -->
+  <data name="RelationshipName_Display_Key" xml:space="preserve">
+    <value>Relationship Name</value>
+    <comment>Display name for relationship name property</comment>
+  </data>
+  <data name="RelationshipName_Desc_Key" xml:space="preserve">
+    <value>The schema name of the relationship to manage</value>
+    <comment>Description for relationship name property</comment>
+  </data>
+  <data name="PrimaryEntity_Display_Key" xml:space="preserve">
+    <value>Primary Entity Schema Name</value>
+    <comment>Display name for primary entity property</comment>
+  </data>
+  <data name="PrimaryEntity_Desc_Key" xml:space="preserve">
+    <value>The schema name of the primary entity in the relationship</value>
+    <comment>Description for primary entity property</comment>
+  </data>
+  <data name="SecondaryEntity_Display_Key" xml:space="preserve">
+    <value>Secondary Entity Schema Name</value>
+    <comment>Display name for secondary entity property</comment>
+  </data>
+  <data name="SecondaryEntity_Desc_Key" xml:space="preserve">
+    <value>The schema name of the secondary entity in the relationship</value>
+    <comment>Description for secondary entity property</comment>
+  </data>
+  <data name="SearchField_Display_Key" xml:space="preserve">
+    <value>Search Field Name</value>
+    <comment>Display name for search field property</comment>
+  </data>
+  <data name="SearchField_Desc_Key" xml:space="preserve">
+    <value>The field name to use for searching and displaying records</value>
+    <comment>Description for search field property</comment>
+  </data>
+  <data name="AllowAutoCreate_Display_Key" xml:space="preserve">
+    <value>Allow Auto Create</value>
+    <comment>Display name for allow auto create property</comment>
+  </data>
+  <data name="AllowAutoCreate_Desc_Key" xml:space="preserve">
+    <value>Allow creating new records directly from the control</value>
+    <comment>Description for allow auto create property</comment>
+  </data>
+  
+  <!-- Relationship Type Configuration -->
+  <data name="RelationshipType_Display_Key" xml:space="preserve">
+    <value>Relationship Type</value>
+    <comment>Display name for relationship type selection</comment>
+  </data>
+  <data name="RelationshipType_Desc_Key" xml:space="preserve">
+    <value>Choose 'Native' for N:N relationships, 'Intersect' for custom intersect tables, or 'Connection' for Dataverse connections. Default is 'Native'.</value>
+    <comment>Description for relationship type property</comment>
+  </data>
+  
+  <!-- Intersect Table Configuration -->
+  <data name="IntersectTable_Display_Key" xml:space="preserve">
+    <value>Intersect Table Name</value>
+    <comment>Display name for intersect table schema name (for Intersect mode)</comment>
+  </data>
+  <data name="IntersectTable_Desc_Key" xml:space="preserve">
+    <value>The schema name of the custom intersect table (e.g., 'new_tagging'). Required when using Intersect mode.</value>
+    <comment>Description for intersect table property</comment>
+  </data>
+  <data name="PrimaryLookup_Display_Key" xml:space="preserve">
+    <value>Primary Lookup Navigation Property</value>
+    <comment>Display name for primary lookup navigation property in intersect table</comment>
+  </data>
+  <data name="PrimaryLookup_Desc_Key" xml:space="preserve">
+    <value>The single-valued navigation property name for the lookup to the primary entity on the intersect table. This is used with @odata.bind and can differ from the lookup column name. Required when using Intersect mode.</value>
+    <comment>Description for primary lookup navigation property</comment>
+  </data>
+  <data name="SecondaryLookup_Display_Key" xml:space="preserve">
+    <value>Secondary Lookup Navigation Property</value>
+    <comment>Display name for secondary lookup navigation property in intersect table</comment>
+  </data>
+  <data name="SecondaryLookup_Desc_Key" xml:space="preserve">
+    <value>The single-valued navigation property name for the lookup to the tag entity on the intersect table. This is used with @odata.bind and can differ from the lookup column name. Required when using Intersect mode.</value>
+    <comment>Description for secondary lookup navigation property</comment>
+  </data>
+  <data name="IntersectNameField_Display_Key" xml:space="preserve">
+    <value>Intersect Name Field</value>
+    <comment>Display name for intersect table primary name field</comment>
+  </data>
+  <data name="IntersectNameField_Desc_Key" xml:space="preserve">
+    <value>The schema name of the text field in the intersect table to store the selected tag name (e.g., 'new_name'). Required when using Intersect mode.</value>
+    <comment>Description for intersect name field property</comment>
+  </data>
+  <data name="RelationshipTypeField_Display_Key" xml:space="preserve">
+    <value>Relationship Type Field Name</value>
+    <comment>Display name for relationship type choice field logical name</comment>
+  </data>
+  <data name="RelationshipTypeField_Desc_Key" xml:space="preserve">
+    <value>The logical name of the choice column used to categorize relationship records. Used in Intersect and Connection modes.</value>
+    <comment>Description for relationship type field name property</comment>
+  </data>
+  <data name="RelationshipTypeValues_Display_Key" xml:space="preserve">
+    <value>Relationship Type Values</value>
+    <comment>Display name for relationship type choice values list</comment>
+  </data>
+  <data name="RelationshipTypeValues_Desc_Key" xml:space="preserve">
+    <value>Comma-separated integer values for the relationship type choice column (for example: 100000000,100000001). Used in Intersect and Connection modes.</value>
+    <comment>Description for relationship type values property</comment>
+  </data>
+  
+  <!-- Dataset Display Names -->
+  <data name="TagDataSet_Display_Key" xml:space="preserve">
+    <value>Tag Data</value>
+    <comment>Display name for the tag dataset</comment>
+  </data>
+  <data name="DisplayField_Display_Key" xml:space="preserve">
+    <value>Display Field</value>
+    <comment>Display name for the display field property-set</comment>
+  </data>
+  <data name="DisplayField_Desc_Key" xml:space="preserve">
+    <value>The field to display in the tag</value>
+    <comment>Description for display field property-set</comment>
+  </data>
+  <data name="RecordId_Display_Key" xml:space="preserve">
+    <value>Record ID</value>
+    <comment>Display name for the record ID property-set</comment>
+  </data>
+  <data name="RecordId_Desc_Key" xml:space="preserve">
+    <value>The unique identifier of the record</value>
+    <comment>Description for record ID property-set</comment>
+  </data>
+  
+  <!-- UI Labels -->
+  <data name="AddTag_Label" xml:space="preserve">
+    <value>Add tag</value>
+    <comment>Label for add tag input</comment>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>Search to add tags...</value>
+    <comment>Placeholder text for search input</comment>
+  </data>
+  <data name="SelectAll_Label" xml:space="preserve">
+    <value>Select All</value>
+    <comment>Label for select all button</comment>
+  </data>
+  <data name="DeleteSelected_Label" xml:space="preserve">
+    <value>Delete Selected</value>
+    <comment>Label for delete selected button</comment>
+  </data>
+  <data name="Loading_Label" xml:space="preserve">
+    <value>Loading tags...</value>
+    <comment>Loading state message</comment>
+  </data>
+  <data name="NoTags_Label" xml:space="preserve">
+    <value>No tags</value>
+    <comment>Empty state message when no tags exist</comment>
+  </data>
+  <data name="NoTagsDescription" xml:space="preserve">
+    <value>Start typing to search and add tags</value>
+    <comment>Empty state description</comment>
+  </data>
+  <data name="RemoveTag_Tooltip" xml:space="preserve">
+    <value>Remove tag</value>
+    <comment>Tooltip for remove tag button</comment>
+  </data>
+  
+  <!-- Error Messages -->
+  <data name="Error_LoadingTags" xml:space="preserve">
+    <value>Failed to load tags</value>
+    <comment>Error message when loading tags fails</comment>
+  </data>
+  <data name="Error_AddingTag" xml:space="preserve">
+    <value>Failed to add tag</value>
+    <comment>Error message when adding tag fails</comment>
+  </data>
+  <data name="Error_RemovingTag" xml:space="preserve">
+    <value>Failed to remove tag</value>
+    <comment>Error message when removing tag fails</comment>
+  </data>
+  <data name="Error_SearchFailed" xml:space="preserve">
+    <value>Search failed. Please try again.</value>
+    <comment>Error message when search fails</comment>
+  </data>
+  <data name="Error_InvalidTypeValues" xml:space="preserve">
+    <value>Relationship Type Values must be a comma-separated list of integers.</value>
+    <comment>Error for invalid relationship type values format</comment>
+  </data>
+  
+  <!-- Success Messages -->
+  <data name="Success_TagAdded" xml:space="preserve">
+    <value>Tag added successfully</value>
+    <comment>Success message when tag is added</comment>
+  </data>
+  <data name="Success_TagRemoved" xml:space="preserve">
+    <value>Tag removed successfully</value>
+    <comment>Success message when tag is removed</comment>
+  </data>
+  <data name="Success_BulkDelete" xml:space="preserve">
+    <value>Selected tags deleted successfully</value>
+    <comment>Success message when bulk delete completes</comment>
+  </data>
+  
+  <!-- Confirmation Messages -->
+  <data name="Confirm_DeleteTitle" xml:space="preserve">
+    <value>Confirm Delete</value>
+    <comment>Title for delete confirmation dialog</comment>
+  </data>
+  <data name="Confirm_DeleteMessage" xml:space="preserve">
+    <value>Are you sure you want to delete the selected tags?</value>
+    <comment>Message for delete confirmation dialog</comment>
+  </data>
+  <data name="Confirm_Yes" xml:space="preserve">
+    <value>Yes</value>
+    <comment>Confirmation button text</comment>
+  </data>
+  <data name="Confirm_No" xml:space="preserve">
+    <value>No</value>
+    <comment>Cancel button text</comment>
+  </data>
+  <data name="ChooseType_Title" xml:space="preserve">
+    <value>Select relationship type</value>
+    <comment>Title for selecting a relationship type value</comment>
+  </data>
+  <data name="ChooseType_Message" xml:space="preserve">
+    <value>Choose which relationship type to use for this item.</value>
+    <comment>Prompt text for type selection dialog</comment>
+  </data>
+  <data name="ChooseType_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>Cancel button text for type selection dialog</comment>
+  </data>
+  
+  <!-- Accessibility Labels -->
+  <data name="Aria_TagList" xml:space="preserve">
+    <value>List of tags</value>
+    <comment>ARIA label for tag list</comment>
+  </data>
+  <data name="Aria_SearchInput" xml:space="preserve">
+    <value>Search for tags to add</value>
+    <comment>ARIA label for search input</comment>
+  </data>
+  <data name="Aria_RemoveButton" xml:space="preserve">
+    <value>Remove tag {0}</value>
+    <comment>ARIA label for remove button. {0} will be replaced with tag name</comment>
+  </data>
+  <data name="Aria_TagCount" xml:space="preserve">
+    <value>{0} tags</value>
+    <comment>ARIA announcement for tag count. {0} will be replaced with number</comment>
+  </data>
+</root>

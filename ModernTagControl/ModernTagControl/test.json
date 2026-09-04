@@ -1,0 +1,228 @@
+{
+  "testData": [
+    {
+      "id": "test-001",
+      "displayField": "Dynamics 365",
+      "recordId": "550e8400-e29b-41d4-a716-446655440000"
+    },
+    {
+      "id": "test-002",
+      "displayField": "Power Platform",
+      "recordId": "6ba7b810-9dad-11d1-80b4-00c04fd430c8"
+    },
+    {
+      "id": "test-003",
+      "displayField": "Customer Engagement",
+      "recordId": "6ba7b811-9dad-11d1-80b4-00c04fd430c8"
+    },
+    {
+      "id": "test-004",
+      "displayField": "Model-driven Apps",
+      "recordId": "6ba7b812-9dad-11d1-80b4-00c04fd430c8"
+    },
+    {
+      "id": "test-005",
+      "displayField": "Canvas Apps",
+      "recordId": "6ba7b813-9dad-11d1-80b4-00c04fd430c8"
+    },
+    {
+      "id": "test-006",
+      "displayField": "Power Automate",
+      "recordId": "6ba7b814-9dad-11d1-80b4-00c04fd430c8"
+    },
+    {
+      "id": "test-007",
+      "displayField": "Power BI",
+      "recordId": "6ba7b815-9dad-11d1-80b4-00c04fd430c8"
+    },
+    {
+      "id": "test-008",
+      "displayField": "Power Pages",
+      "recordId": "6ba7b816-9dad-11d1-80b4-00c04fd430c8"
+    },
+    {
+      "id": "test-009",
+      "displayField": "AI Builder",
+      "recordId": "6ba7b817-9dad-11d1-80b4-00c04fd430c8"
+    },
+    {
+      "id": "test-010",
+      "displayField": "Virtual Agents",
+      "recordId": "6ba7b818-9dad-11d1-80b4-00c04fd430c8"
+    }
+  ],
+  "parameters": {
+    "relationshipName": {
+      "raw": "new_tagrelationship"
+    },
+    "primaryEntitySchemaName": {
+      "raw": "account"
+    },
+    "secondaryEntitySchemaName": {
+      "raw": "new_tag"
+    },
+    "searchFieldName": {
+      "raw": "displayField"
+    },
+    "allowAutoCreate": {
+      "raw": 1
+    },
+    "tagDataSet": {
+      "raw": null,
+      "loading": false,
+      "error": false,
+      "errorMessage": "",
+      "sortedRecordIds": [
+        "test-001",
+        "test-002",
+        "test-003"
+      ],
+      "columns": [
+        {
+          "name": "displayField",
+          "displayName": "Display Field",
+          "order": 0,
+          "visualSizeFactor": 100
+        },
+        {
+          "name": "recordId",
+          "displayName": "Record ID",
+          "order": 1,
+          "visualSizeFactor": 50
+        }
+      ],
+      "records": {
+        "test-001": {
+          "displayField": "Dynamics 365",
+          "recordId": "550e8400-e29b-41d4-a716-446655440000",
+          "getFormattedValue": function(fieldName) {
+            if (fieldName === "displayField") return "Dynamics 365";
+            if (fieldName === "recordId") return "550e8400-e29b-41d4-a716-446655440000";
+            return null;
+          },
+          "getValue": function(fieldName) {
+            if (fieldName === "displayField") return "Dynamics 365";
+            if (fieldName === "recordId") return "550e8400-e29b-41d4-a716-446655440000";
+            return null;
+          },
+          "getRecordId": function() {
+            return "test-001";
+          },
+          "getNamedReference": function() {
+            return { entityType: "new_tag", id: "550e8400-e29b-41d4-a716-446655440000", name: "Dynamics 365" };
+          }
+        },
+        "test-002": {
+          "displayField": "Power Platform",
+          "recordId": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+          "getFormattedValue": function(fieldName) {
+            if (fieldName === "displayField") return "Power Platform";
+            if (fieldName === "recordId") return "6ba7b810-9dad-11d1-80b4-00c04fd430c8";
+            return null;
+          },
+          "getValue": function(fieldName) {
+            if (fieldName === "displayField") return "Power Platform";
+            if (fieldName === "recordId") return "6ba7b810-9dad-11d1-80b4-00c04fd430c8";
+            return null;
+          },
+          "getRecordId": function() {
+            return "test-002";
+          },
+          "getNamedReference": function() {
+            return { entityType: "new_tag", id: "6ba7b810-9dad-11d1-80b4-00c04fd430c8", name: "Power Platform" };
+          }
+        },
+        "test-003": {
+          "displayField": "Customer Engagement",
+          "recordId": "6ba7b811-9dad-11d1-80b4-00c04fd430c8",
+          "getFormattedValue": function(fieldName) {
+            if (fieldName === "displayField") return "Customer Engagement";
+            if (fieldName === "recordId") return "6ba7b811-9dad-11d1-80b4-00c04fd430c8";
+            return null;
+          },
+          "getValue": function(fieldName) {
+            if (fieldName === "displayField") return "Customer Engagement";
+            if (fieldName === "recordId") return "6ba7b811-9dad-11d1-80b4-00c04fd430c8";
+            return null;
+          },
+          "getRecordId": function() {
+            return "test-003";
+          },
+          "getNamedReference": function() {
+            return { entityType: "new_tag", id: "6ba7b811-9dad-11d1-80b4-00c04fd430c8", name: "Customer Engagement" };
+          }
+        }
+      },
+      "getTargetEntityType": function() {
+        return "new_tag";
+      },
+      "getTitle": function() {
+        return "Associated Tags";
+      },
+      "getViewId": function() {
+        return "view-001";
+      },
+      "getSelectedRecordIds": function() {
+        return [];
+      },
+      "clearSelectedRecordIds": function() {},
+      "openDatasetItem": function() {},
+      "refresh": function() {},
+      "setSelectedRecordIds": function() {}
+    }
+  },
+  "context": {
+    "mode": {
+      "isControlDisabled": false,
+      "isVisible": true,
+      "allocatedHeight": 600,
+      "allocatedWidth": 800,
+      "trackContainerResize": function() {}
+    },
+    "webAPI": {
+      "retrieveMultipleRecords": function(entityType, query) {
+        return Promise.resolve({
+          entities: [
+            { id: "550e8400-e29b-41d4-a716-446655440001", displayField: "Azure Services" },
+            { id: "550e8400-e29b-41d4-a716-446655440002", displayField: "DevOps" },
+            { id: "550e8400-e29b-41d4-a716-446655440003", displayField: "Copilot" },
+            { id: "550e8400-e29b-41d4-a716-446655440004", displayField: "API Management" }
+          ],
+          nextLink: ""
+        });
+      },
+      "createRecord": function(entityType, data) {
+        return Promise.resolve({
+          entityType: entityType,
+          id: Math.random().toString(36).substr(2, 9)
+        });
+      },
+      "deleteRecord": function() {
+        return Promise.resolve();
+      }
+    },
+    "resources": {
+      "getString": function(key) {
+        const strings = {
+          "AddTag_Label": "Add tag",
+          "SearchPlaceholder": "Search to add tags...",
+          "SelectAll_Label": "Select All",
+          "DeleteSelected_Label": "Delete Selected",
+          "Loading_Label": "Loading tags...",
+          "NoTags_Label": "No tags",
+          "NoTagsDescription": "Start typing to search and add tags",
+          "RemoveTag_Tooltip": "Remove tag",
+          "Error_LoadingTags": "Failed to load tags",
+          "Error_SearchFailed": "Search failed. Please try again.",
+          "Aria_TagList": "List of tags",
+          "Aria_SearchInput": "Search for tags to add"
+        };
+        return strings[key] || "";
+      }
+    },
+    "fluentDesignLanguage": {
+      "tokenTheme": {},
+      "isDarkTheme": false
+    }
+  }
+}

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="ModernTagControl_Display_Key" xml:space="preserve"><value>Moderni tunnisteohjaus</value></data>
+  <data name="ModernTagControl_Desc_Key" xml:space="preserve"><value>Moderni ja suorituskykyinen tunnisteiden hallintaohjaus virtuaalisella vierityksellä</value></data>
+
+  <data name="RelationshipName_Display_Key" xml:space="preserve"><value>Yhteyden nimi</value></data>
+  <data name="RelationshipName_Desc_Key" xml:space="preserve"><value>Hallittavan yhteyden rakenne nimi</value></data>
+  <data name="PrimaryEntity_Display_Key" xml:space="preserve"><value>Ensisijaisen taulukon rakenne nimi</value></data>
+  <data name="PrimaryEntity_Desc_Key" xml:space="preserve"><value>Yhteyden ensisijaisen taulukon rakenne nimi</value></data>
+  <data name="SecondaryEntity_Display_Key" xml:space="preserve"><value>Toissijaisen taulukon rakenne nimi</value></data>
+  <data name="SecondaryEntity_Desc_Key" xml:space="preserve"><value>Yhteyden toissijaisen taulukon rakenne nimi</value></data>
+  <data name="SearchField_Display_Key" xml:space="preserve"><value>Hakukentän nimi</value></data>
+  <data name="SearchField_Desc_Key" xml:space="preserve"><value>Tunnisteiden hakuun ja näyttämiseen käytettävän kentän nimi</value></data>
+  <data name="AllowAutoCreate_Display_Key" xml:space="preserve"><value>Salli automaattinen luonti</value></data>
+  <data name="AllowAutoCreate_Desc_Key" xml:space="preserve"><value>Salli uusien tunnisteiden luonti suoraan ohjauksesta</value></data>
+
+  <data name="RelationshipType_Display_Key" xml:space="preserve"><value>Yhteyden tyyppi</value></data>
+  <data name="RelationshipType_Desc_Key" xml:space="preserve"><value>Valitse 'Native' n:m-yhteyksille, 'Intersect' mukautetuille liitostauluille tai 'Connection' Dataverse-yhteyksille. Oletus on 'Native'.</value></data>
+
+  <data name="IntersectTable_Display_Key" xml:space="preserve"><value>Liitostaulun nimi</value></data>
+  <data name="IntersectTable_Desc_Key" xml:space="preserve"><value>Mukautetun liitostaulun rakenne nimi (esimerkiksi 'new_tagging'). Pakollinen Intersect-tilassa.</value></data>
+  <data name="PrimaryLookup_Display_Key" xml:space="preserve"><value>Ensisijaisen haun siirtymisominaisuus</value></data>
+  <data name="PrimaryLookup_Desc_Key" xml:space="preserve"><value>Liitostaulun ensisijaiseen taulukkoon viittaavan haun yksiarvoisen siirtymisominaisuuden nimi. Sita käytetaan @odata.bind-merkinnan kanssa, ja se voi poiketa hakusarakkeen nimesta. Pakollinen Intersect-tilassa.</value></data>
+  <data name="SecondaryLookup_Display_Key" xml:space="preserve"><value>Toissijaisen haun siirtymisominaisuus</value></data>
+  <data name="SecondaryLookup_Desc_Key" xml:space="preserve"><value>Liitostaulun tunnistetaulukkoon viittaavan haun yksiarvoisen siirtymisominaisuuden nimi. Sita käytetaan @odata.bind-merkinnan kanssa, ja se voi poiketa hakusarakkeen nimesta. Pakollinen Intersect-tilassa.</value></data>
+  <data name="IntersectNameField_Display_Key" xml:space="preserve"><value>Liitostaulun nimikenttä</value></data>
+  <data name="IntersectNameField_Desc_Key" xml:space="preserve"><value>Tekstikentän rakenne nimi liitostaulussa tunnisteen nimen tallentamista varten (esimerkiksi 'new_name'). Pakollinen Intersect-tilassa.</value></data>
+  <data name="RelationshipTypeField_Display_Key" xml:space="preserve"><value>Yhteystyypin kentän nimi</value></data>
+  <data name="RelationshipTypeField_Desc_Key" xml:space="preserve"><value>Yhteystietueiden luokittelussa käytettävän valintakentän looginen nimi. Käytetään Intersect- ja Connection-tiloissa.</value></data>
+  <data name="RelationshipTypeValues_Display_Key" xml:space="preserve"><value>Yhteystyypin arvot</value></data>
+  <data name="RelationshipTypeValues_Desc_Key" xml:space="preserve"><value>Pilkulla eroteltu luettelo yhteystyypin valintakentän kokonaislukuarvoista (esimerkiksi: 100000000,100000001). Käytetään Intersect- ja Connection-tiloissa.</value></data>
+
+  <data name="TagDataSet_Display_Key" xml:space="preserve"><value>Tunnistetiedot</value></data>
+  <data name="DisplayField_Display_Key" xml:space="preserve"><value>Näyttökenttä</value></data>
+  <data name="DisplayField_Desc_Key" xml:space="preserve"><value>Tunnisteessa näytettävä kenttä</value></data>
+  <data name="RecordId_Display_Key" xml:space="preserve"><value>Tietueen tunnus</value></data>
+  <data name="RecordId_Desc_Key" xml:space="preserve"><value>Tietueen yksilöllinen tunnus</value></data>
+
+  <data name="AddTag_Label" xml:space="preserve"><value>Lisää tunniste</value></data>
+  <data name="SearchPlaceholder" xml:space="preserve"><value>Hae lisättäviä tunnisteita...</value></data>
+  <data name="SelectAll_Label" xml:space="preserve"><value>Valitse kaikki</value></data>
+  <data name="DeleteSelected_Label" xml:space="preserve"><value>Poista valitut</value></data>
+  <data name="Loading_Label" xml:space="preserve"><value>Ladataan tunnisteita...</value></data>
+  <data name="NoTags_Label" xml:space="preserve"><value>Ei tunnisteita</value></data>
+  <data name="NoTagsDescription" xml:space="preserve"><value>Aloita kirjoittamalla hakeaksesi ja lisätäksesi tunnisteita</value></data>
+  <data name="RemoveTag_Tooltip" xml:space="preserve"><value>Poista tunniste</value></data>
+
+  <data name="Error_LoadingTags" xml:space="preserve"><value>Tunnisteiden lataaminen epäonnistui</value></data>
+  <data name="Error_AddingTag" xml:space="preserve"><value>Tunnisteen lisääminen epäonnistui</value></data>
+  <data name="Error_RemovingTag" xml:space="preserve"><value>Tunnisteen poistaminen epäonnistui</value></data>
+  <data name="Error_SearchFailed" xml:space="preserve"><value>Haku epäonnistui. Yritä uudelleen.</value></data>
+  <data name="Error_InvalidTypeValues" xml:space="preserve"><value>Yhteystyypin arvojen on oltava pilkulla eroteltu luettelo kokonaislukuja.</value></data>
+
+  <data name="Success_TagAdded" xml:space="preserve"><value>Tunniste lisättiin onnistuneesti</value></data>
+  <data name="Success_TagRemoved" xml:space="preserve"><value>Tunniste poistettiin onnistuneesti</value></data>
+  <data name="Success_BulkDelete" xml:space="preserve"><value>Valitut tunnisteet poistettiin onnistuneesti</value></data>
+
+  <data name="Confirm_DeleteTitle" xml:space="preserve"><value>Vahvista poisto</value></data>
+  <data name="Confirm_DeleteMessage" xml:space="preserve"><value>Haluatko varmasti poistaa valitut tunnisteet?</value></data>
+  <data name="Confirm_Yes" xml:space="preserve"><value>Kyllä</value></data>
+  <data name="Confirm_No" xml:space="preserve"><value>Ei</value></data>
+  <data name="ChooseType_Title" xml:space="preserve"><value>Valitse yhteyden tyyppi</value></data>
+  <data name="ChooseType_Message" xml:space="preserve"><value>Valitse tälle kohteelle käytettävä yhteyden tyyppi.</value></data>
+  <data name="ChooseType_Cancel" xml:space="preserve"><value>Peruuta</value></data>
+
+  <data name="Aria_TagList" xml:space="preserve"><value>Tunnisteiden luettelo</value></data>
+  <data name="Aria_SearchInput" xml:space="preserve"><value>Hae lisättäviä tunnisteita</value></data>
+  <data name="Aria_RemoveButton" xml:space="preserve"><value>Poista tunniste {0}</value></data>
+  <data name="Aria_TagCount" xml:space="preserve"><value>{0} tunnistetta</value></data>
+</root>
