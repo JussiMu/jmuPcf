@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="ModirumPlatforms.Controls" constructor="ModernTagControl" version="2.0.1" display-name-key="ModernTagControl_Display_Key" description-key="ModernTagControl_Desc_Key" control-type="virtual" >
+  <control namespace="ModirumPlatforms.Controls" constructor="ModernTagControl" version="2.0.3" display-name-key="ModernTagControl_Display_Key" description-key="ModernTagControl_Desc_Key" control-type="virtual" >
     <external-service-usage enabled="false">
     </external-service-usage>
     
@@ -25,6 +25,7 @@
     <!-- Common Configuration -->
     <property name="searchFieldName" display-name-key="SearchField_Display_Key" description-key="SearchField_Desc_Key" of-type="SingleLine.Text" usage="input" required="true" />
     <property name="allowAutoCreate" display-name-key="AllowAutoCreate_Display_Key" description-key="AllowAutoCreate_Desc_Key" of-type="TwoOptions" usage="input" required="true" />
+    <property name="prefilterViewId" display-name-key="PrefilterViewId_Display_Key" description-key="PrefilterViewId_Desc_Key" of-type="SingleLine.Text" usage="input" required="false" />
     
     <!-- dataset node represents a set of entity records on CDS; allow more than one datasets -->
     <data-set name="tagDataSet" display-name-key="TagDataSet_Display_Key">

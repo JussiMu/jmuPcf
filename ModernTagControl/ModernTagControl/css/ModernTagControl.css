@@ -8,6 +8,13 @@
   flex-direction: column;
   gap: 8px;
   padding: 8px;
+  position: relative;
+  z-index: 0;
+}
+
+/* Raise this instance above sibling control instances while its popup/dialog is open. */
+.modern-tag-control-container.is-popup-open {
+  z-index: 1000;
 }
 
 .tag-list-container {

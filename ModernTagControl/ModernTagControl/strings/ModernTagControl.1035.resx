@@ -42,6 +42,8 @@
   <data name="RelationshipTypeField_Desc_Key" xml:space="preserve"><value>Yhteystietueiden luokittelussa käytettävän valintakentän looginen nimi. Käytetään Intersect- ja Connection-tiloissa.</value></data>
   <data name="RelationshipTypeValues_Display_Key" xml:space="preserve"><value>Yhteystyypin arvot</value></data>
   <data name="RelationshipTypeValues_Desc_Key" xml:space="preserve"><value>Pilkulla eroteltu luettelo yhteystyypin valintakentän kokonaislukuarvoista (esimerkiksi: 100000000,100000001). Käytetään Intersect- ja Connection-tiloissa.</value></data>
+  <data name="PrefilterViewId_Display_Key" xml:space="preserve"><value>Esisuodatuksen näkymän tunnus</value></data>
+  <data name="PrefilterViewId_Desc_Key" xml:space="preserve"><value>Valinnainen tallennettu näkymä (savedqueryid GUID), jonka suodatinehtoja käytetään tunnisteita haettaessa.</value></data>
 
   <data name="TagDataSet_Display_Key" xml:space="preserve"><value>Tunnistetiedot</value></data>
   <data name="DisplayField_Display_Key" xml:space="preserve"><value>Näyttökenttä</value></data>

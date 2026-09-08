@@ -47,6 +47,7 @@ export const TagControl: React.FC<TagControlProps> = ({ context }) => {
     const dataSet = context.parameters.tagDataSet as any;
     const searchFieldName = getStringPropertyRaw(context.parameters.searchFieldName);
     const allowAutoCreate = getBooleanPropertyRaw(context.parameters.allowAutoCreate);
+    const prefilterViewId = getStringPropertyRaw(context.parameters.prefilterViewId);
 
     // Configuration detection for relationship type and intersect tables
     const relationshipType = getStringPropertyRaw(context.parameters.relationshipType).toLowerCase() || "native";
@@ -81,8 +82,10 @@ export const TagControl: React.FC<TagControlProps> = ({ context }) => {
     const [isCreatingTag, setIsCreatingTag] = React.useState(false);
     const [selectedTagIds, setSelectedTagIds] = React.useState<Set<string>>(new Set());
     const [isTypeDialogOpen, setIsTypeDialogOpen] = React.useState(false);
+    const [isComboboxOpen, setIsComboboxOpen] = React.useState(false);
     const [pendingSelection, setPendingSelection] = React.useState<PendingSelection | null>(null);
     const [relationshipTypeLabels, setRelationshipTypeLabels] = React.useState<Record<number, string>>({});
+    const [prefilterFetchXml, setPrefilterFetchXml] = React.useState<string | null>(null);
     // Portaled Fluent popups must stay inside the control so they inherit the FluentProvider theme variables.
     const [portalMountNode, setPortalMountNode] = React.useState<HTMLDivElement | null>(null);
     const actionsEnabled = false;
@@ -104,9 +107,9 @@ export const TagControl: React.FC<TagControlProps> = ({ context }) => {
             const labelValue =
                 record.getFormattedValue("displayField") ??
                 (record.getValue("displayField") as string | null);
-            const idValue = (record.getValue("recordId") as string | null) ?? record.getRecordId();
+            // recordId is already the dataset row's real GUID key, no need to read the bound "recordId" column.
             return {
-                id: String(idValue ?? recordId),
+                id: recordId,
                 label: String(labelValue ?? "(Unnamed)")
             };
         }).filter((tag): tag is TagRecord => tag !== null);
@@ -170,6 +173,27 @@ export const TagControl: React.FC<TagControlProps> = ({ context }) => {
         relationshipTypeFieldName,
         parsedRelationshipTypeValues,
     ]);
+
+    React.useEffect(() => {
+        if (!prefilterViewId || !context.webAPI) {
+            setPrefilterFetchXml(null);
+            return;
+        }
+
+        let isActive = true;
+        const loadFetchXml = async () => {
+            const fetchXml = await resolveViewFetchXml(context.webAPI, prefilterViewId);
+            if (isActive) {
+                setPrefilterFetchXml(fetchXml);
+            }
+        };
+
+        void loadFetchXml();
+
+        return () => {
+            isActive = false;
+        };
+    }, [context.webAPI, prefilterViewId]);
 
     // Validate configuration based on relationship type
     const isConfigurationValid = React.useMemo(() => {
@@ -294,8 +318,14 @@ export const TagControl: React.FC<TagControlProps> = ({ context }) => {
         }
         entityType = entityType.toLowerCase();
 
-        const escapedText = escapeODataValue(searchText.trim());
-        const query = `?$select=${searchFieldName}&$filter=contains(${searchFieldName},'${escapedText}')&$top=${SEARCH_LIMIT}`;
+        const searchTerm = searchText.trim();
+        const prefilteredFetchXml = prefilterFetchXml
+            ? buildPrefilteredFetchXml(prefilterFetchXml, entityType, searchFieldName, searchTerm, SEARCH_LIMIT)
+            : null;
+        // FetchXML options must be prefixed with "?fetchXml=" and must not be URL-encoded.
+        const query = prefilteredFetchXml
+            ? `?fetchXml=${prefilteredFetchXml}`
+            : `?$select=${searchFieldName}&$filter=contains(${searchFieldName},'${escapeODataValue(searchTerm)}')&$top=${SEARCH_LIMIT}`;
         let isActive = true;
 
         const debounceId = window.setTimeout(() => {
@@ -304,7 +334,11 @@ export const TagControl: React.FC<TagControlProps> = ({ context }) => {
                 setSearchError(null);
 
                 try {
-                    const result = await context.webAPI.retrieveMultipleRecords(entityType, query, SEARCH_LIMIT);
+                    const result = await context.webAPI.retrieveMultipleRecords(
+                        entityType,
+                        query,
+                        prefilteredFetchXml ? undefined : SEARCH_LIMIT
+                    );
                     if (!isActive) {
                         return;
                     }
@@ -340,7 +374,7 @@ export const TagControl: React.FC<TagControlProps> = ({ context }) => {
             isActive = false;
             window.clearTimeout(debounceId);
         };
-    }, [context.webAPI, dataSet, searchFieldName, searchText, strings.errorSearchFailed, isIntersectMode, isConnectionMode, secondaryEntitySchemaName]);
+    }, [context.webAPI, dataSet, searchFieldName, searchText, strings.errorSearchFailed, isIntersectMode, isConnectionMode, secondaryEntitySchemaName, prefilterFetchXml]);
 
     const handleSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchText(event.target.value);
@@ -533,7 +567,7 @@ export const TagControl: React.FC<TagControlProps> = ({ context }) => {
         setIsCreatingTag(true);
         setSearchError(null);
         try {
-            const createdTag = await context.webAPI.createRecord(secondaryEntitySchemaName, {
+            const createdTag = await context.webAPI.createRecord(secondaryEntitySchemaName.toLowerCase(), {
                 [searchFieldName]: tagLabel,
             });
             if (!createdTag.id) {
@@ -713,8 +747,15 @@ export const TagControl: React.FC<TagControlProps> = ({ context }) => {
         );
     };
 
+    // Multiple control instances on the same form are DOM siblings with no stacking context of their own,
+    // so raise this instance above the others while its popup is open to avoid it rendering underneath them.
+    const hasOpenPopup = isComboboxOpen || isTypeDialogOpen;
+
     return (
-        <div className="modern-tag-control-container" ref={setPortalMountNode}>
+        <div
+            className={`modern-tag-control-container${hasOpenPopup ? " is-popup-open" : ""}`}
+            ref={setPortalMountNode}
+        >
             <div className="tag-input-container">
                 <Combobox
                     aria-label={strings.ariaSearchInput}
@@ -722,6 +763,7 @@ export const TagControl: React.FC<TagControlProps> = ({ context }) => {
                     value={searchText}
                     onInput={handleSearchInput}
                     onOptionSelect={handleOptionSelect}
+                    onOpenChange={(_event, data) => setIsComboboxOpen(data.open)}
                     disabled={!searchFieldName}
                     mountNode={portalMountNode}
                 >
@@ -840,6 +882,106 @@ const resolveEntityId = (entity: ComponentFramework.WebApi.Entity, entityType: s
 };
 
 const escapeODataValue = (value: string): string => value.replace(/'/g, "''");
+
+const viewFetchXmlCache = new Map<string, string | null>();
+
+const resolveViewFetchXml = async (
+    webApi: ComponentFramework.WebApi,
+    viewId: string
+): Promise<string | null> => {
+    const normalizedViewId = viewId.trim().replace(/[{}]/g, "").toLowerCase();
+    if (!normalizedViewId) {
+        return null;
+    }
+
+    const cachedFetchXml = viewFetchXmlCache.get(normalizedViewId);
+    if (cachedFetchXml !== undefined) {
+        return cachedFetchXml;
+    }
+
+    try {
+        const view = await webApi.retrieveRecord("savedquery", normalizedViewId, "?$select=fetchxml");
+        const fetchXml = typeof view.fetchxml === "string" ? view.fetchxml : null;
+        viewFetchXmlCache.set(normalizedViewId, fetchXml);
+        return fetchXml;
+    } catch (error) {
+        console.warn(`Unable to resolve fetchxml for view ${normalizedViewId}`, error);
+        viewFetchXmlCache.set(normalizedViewId, null);
+        return null;
+    }
+};
+
+// Wraps the view's existing filter (if any) together with a search condition so both criteria apply.
+const buildPrefilteredFetchXml = (
+    fetchXml: string,
+    entityType: string,
+    searchFieldName: string,
+    searchText: string,
+    top: number
+): string | null => {
+    try {
+        const doc = new DOMParser().parseFromString(fetchXml, "application/xml");
+        if (doc.getElementsByTagName("parsererror").length > 0) {
+            return null;
+        }
+
+        const fetchNode = doc.documentElement;
+        fetchNode.setAttribute("top", String(top));
+        fetchNode.removeAttribute("page");
+        fetchNode.removeAttribute("count");
+        fetchNode.removeAttribute("paging-cookie");
+
+        const entityNode = fetchNode.getElementsByTagName("entity")[0];
+        if (!entityNode) {
+            return null;
+        }
+
+        // The view's entity must match what we're about to query, otherwise the prefilter can't apply.
+        const fetchEntityName = entityNode.getAttribute("name")?.toLowerCase();
+        if (fetchEntityName !== entityType.toLowerCase()) {
+            console.warn(`Prefilter view entity "${fetchEntityName ?? ""}" does not match search entity "${entityType}"; ignoring prefilter.`);
+            return null;
+        }
+
+        // The view may not project the search field, but we need it back to build the option label.
+        const hasAllAttributes = entityNode.getElementsByTagName("all-attributes").length > 0;
+        const hasSearchFieldAttribute = Array.from(entityNode.childNodes).some(
+            (node): node is Element =>
+                node.nodeType === 1 &&
+                (node as Element).tagName === "attribute" &&
+                (node as Element).getAttribute("name")?.toLowerCase() === searchFieldName.toLowerCase()
+        );
+        if (!hasAllAttributes && !hasSearchFieldAttribute) {
+            const attributeNode = doc.createElement("attribute");
+            attributeNode.setAttribute("name", searchFieldName);
+            entityNode.appendChild(attributeNode);
+        }
+
+        const existingFilterNode = Array.from(entityNode.childNodes).find(
+            (node): node is Element => node.nodeType === 1 && (node as Element).tagName === "filter"
+        );
+
+        const combinedFilterNode = doc.createElement("filter");
+        combinedFilterNode.setAttribute("type", "and");
+        if (existingFilterNode) {
+            entityNode.removeChild(existingFilterNode);
+            combinedFilterNode.appendChild(existingFilterNode);
+        }
+
+        const conditionNode = doc.createElement("condition");
+        conditionNode.setAttribute("attribute", searchFieldName);
+        conditionNode.setAttribute("operator", "like");
+        conditionNode.setAttribute("value", `%${searchText}%`);
+        combinedFilterNode.appendChild(conditionNode);
+
+        entityNode.appendChild(combinedFilterNode);
+
+        return new XMLSerializer().serializeToString(doc);
+    } catch (error) {
+        console.warn("Unable to apply prefilter view to fetchxml", error);
+        return null;
+    }
+};
 
 const getEntityStringValue = (entity: ComponentFramework.WebApi.Entity, fieldName: string): string | null => {
     const record = entity as Record<string, unknown>;

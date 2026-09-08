@@ -170,6 +170,14 @@
     <value>Comma-separated integer values for the relationship type choice column (for example: 100000000,100000001). Used in Intersect and Connection modes.</value>
     <comment>Description for relationship type values property</comment>
   </data>
+  <data name="PrefilterViewId_Display_Key" xml:space="preserve">
+    <value>Prefilter View Id</value>
+    <comment>Display name for the saved view used to prefilter tag search results</comment>
+  </data>
+  <data name="PrefilterViewId_Desc_Key" xml:space="preserve">
+    <value>Optional saved view (savedqueryid GUID) whose filter criteria will be applied when searching for tags.</value>
+    <comment>Description for prefilter view id property</comment>
+  </data>
   
   <!-- Dataset Display Names -->
   <data name="TagDataSet_Display_Key" xml:space="preserve">
